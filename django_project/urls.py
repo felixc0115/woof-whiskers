@@ -1,8 +1,5 @@
 from django.contrib import admin
 from django.urls import path, include
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-]
-
-#  path("api/", include("pets.urls"))
+# I chose to add v1 after my base api route as it is good practice to version your APIs
+urlpatterns = [path("admin/", admin.site.urls), path("api/v1", include("pets.urls"))]
