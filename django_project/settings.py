@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # local
     "accounts.apps.AccountsConfig",
+    "pets.apps.PetsConfig",
 ]
 
 MIDDLEWARE = [
