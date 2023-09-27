@@ -1,4 +1,5 @@
 #Pull base image
+#if you get a django.db.utils.OperationalError: SCRAM authentication requires libpq version 10 or above add --platform=linux/amd64 before the python base image
 FROM python:3.12.0rc3-bookworm
 
 #set environment variables
