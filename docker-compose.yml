@@ -1,7 +1,14 @@
 version: "3.9"
 services:
+  web:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/code
+
   api:
-    build: .
+    build: ./backend
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
