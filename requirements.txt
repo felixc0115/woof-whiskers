@@ -5,3 +5,5 @@ djangorestframework==3.14.0
 psycopg2-binary==2.9.7
 pytz==2023.3.post1
 sqlparse==0.4.4
+dj-rest-auth==2.1.11
+django-allauth~=0.48.0
