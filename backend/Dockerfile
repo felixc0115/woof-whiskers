@@ -14,6 +14,7 @@ WORKDIR /code/backend
 
 #Install dependencies
 COPY ./requirements.txt .
+
 RUN python3 -m pip install -r requirements.txt
 
 #copy project

@@ -13,7 +13,7 @@ class Pet(models.Model):
     pet_picture_url = models.CharField(null=True, blank=True)
     city = models.CharField(null=True)
     state = models.CharField(null=True)
-    users = ArrayField(models.CharField())
+    favorited_by = models.CharField(blank=False, null=True)
 
     def __str__(self):
         return self.pet_id

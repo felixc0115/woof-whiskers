@@ -24,11 +24,11 @@ const PetCard = ({ pet }) => {
           {pet.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {pet.description}
+          {pet?.description || "No description provided"}
         </Typography>
       </CardContent>
       <CardActions sx={{ position: "absolute", bottom: 0 }}>
-        <Button size="small">Share</Button>
+        <Button size="small">Favorite</Button>
         <Button size="small">
           <a href={pet.url}>Learn More</a>
         </Button>
