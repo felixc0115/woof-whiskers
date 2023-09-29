@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const allFavoritedPets = createSlice({
+const allFavoritedPetsSlice = createSlice({
   name: "allFavoritedPets",
   initialState: {
     favPets: [],
@@ -16,5 +16,5 @@ const allFavoritedPets = createSlice({
   },
 });
 
-export const allPetActions = allFavoritedPets.actions;
-export default allFavoritedPets.reducer;
+export const allPetActions = allFavoritedPetsSlice.actions;
+export default allFavoritedPetsSlice.reducer;

@@ -5,7 +5,6 @@ import Resume from "./pages/Resume";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import Pets from "./pages/Pets";
-import HomePage from "./pages/HomePage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Favorites from "./pages/Favorites";

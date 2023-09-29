@@ -27,7 +27,10 @@ const PetCard = ({ pet }) => {
       state: pet.contact.address.state,
       favorited_by: user.username,
     };
-    dispatch(sendPetData(favoritedPet, user.key));
+
+    const token = JSON.parse(localStorage.getItem("user")).key;
+
+    dispatch(sendPetData(favoritedPet, token));
   };
 
   return (

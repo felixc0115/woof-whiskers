@@ -13,14 +13,9 @@ export const sendUserSignupData = (userData) => {
           body: JSON.stringify(userData),
         }
       );
-      const token = await response.json();
 
       if (!response.ok) {
         throw new Error("Sending user data failed");
-      }
-
-      if (response.ok) {
-        localStorage.setItem("user", JSON.stringify(token));
       }
     };
 
@@ -60,10 +55,8 @@ export const sendUserLoginData = (userData) => {
       return token;
     };
     try {
-      const token = await sendUserData();
-      dispatch(
-        authActions.login({ username: userData.username, key: token.key })
-      );
+      await sendUserData();
+      dispatch(authActions.login({ username: userData.username }));
     } catch (error) {
       console.error(error);
     }

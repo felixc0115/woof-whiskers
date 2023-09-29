@@ -22,7 +22,7 @@ const NavBar = () => {
 
   const logoutHandler = () => {
     dispatch(authActions.logout());
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -33,7 +33,7 @@ const NavBar = () => {
           variant="h6"
           sx={{ display: { xs: "none", sm: "block" } }}
         >
-          Furry Pet Finder
+          Woof & Whiskers
         </Typography>
         <Pets sx={{ display: { xs: "block", sm: "none" } }} />
 
