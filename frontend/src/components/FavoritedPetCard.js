@@ -7,18 +7,18 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { allPetActions } from "../store/all-favorite-pets-slice";
-import { useSelector, useDispatch } from "react-redux";
-import { sendPetData } from "../store/pet-actions";
+import { useDispatch } from "react-redux";
+import { removePetData } from "../store/pet-actions";
 
 const FavoritedPetCard = ({ pet }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
 
-  const removeFromFavoritesHandler = (e) => {
-    //need to create a thunk action creator that makes a DELETE request to the specific API endpoint that has the favorited pet
-
+  const removeFromFavoritesHandler = () => {
+    console.log(pet.pet_id);
     const token = JSON.parse(localStorage.getItem("user")).key;
+    const petID = pet.pet_id;
+    console.log(token);
+    dispatch(removePetData(petID, token));
   };
 
   return (

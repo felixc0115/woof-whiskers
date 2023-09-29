@@ -13,6 +13,9 @@ const allFavoritedPetsSlice = createSlice({
     addPet(state, action) {
       state.favPets.push(action.payload);
     },
+    removePet(state, action) {
+      state.favPets = state.filter((pet) => pet.pet_id !== action.payload);
+    },
   },
 });
 

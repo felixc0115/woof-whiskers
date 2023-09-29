@@ -50,6 +50,31 @@ export const sendPetData = (newPet, token) => {
       dispatch(allPetActions.addPet(newPet));
     } catch (error) {
       console.error(error);
+      alert("Sending pet data failed");
+    }
+  };
+};
+
+export const removePetData = async (petID, token) => {
+  return async (dispatch) => {
+    const sendRequest = async () => {
+      const response = await fetch(`http://localhost:8000/api/v1/${petID}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Deleting pet data failed");
+      }
+    };
+    try {
+      await sendRequest();
+      dispatch(allPetActions.removePet(petID));
+    } catch (error) {
+      console.error(error);
+      alert("Deleting pet data failed");
     }
   };
 };

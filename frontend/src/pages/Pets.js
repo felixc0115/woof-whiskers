@@ -1,4 +1,4 @@
-import { Box, IconButton, Pagination, Paper } from "@mui/material";
+import { Box, IconButton, Input, Pagination, Paper } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 import PetCard from "../components/PetCard";
 import SearchIcon from "@mui/icons-material/Search";
@@ -52,6 +52,10 @@ const Pets = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (zipCodeRef.current.value.length < 5) {
+      alert("Please enter a valid zip code (e.g., 30341)");
+      return;
+    }
     setSearchZip(zipCodeRef.current.value);
   };
 
@@ -65,16 +69,15 @@ const Pets = () => {
           border: "1px solid #e3e3e3",
           pl: 2,
           boxShadow: "none",
-          mr: { sm: 5 },
+          m: "16px auto 8px",
+          width: "420px",
+          height: "50px",
         }}
       >
-        <input
+        <Input
           sx={{ border: "none", outline: "none", width: "350px" }}
-          // className="search-bar"
-          ref={zipCodeRef}
-          placeholder="Search..."
-          // value={searchTerm}
-          // onChange={(e) => setSearchTerm(e.target.value)}
+          inputRef={zipCodeRef}
+          placeholder="Search by zip code"
         />
         <IconButton
           type="submit"
@@ -89,7 +92,7 @@ const Pets = () => {
           display: "flex",
           gap: "32px",
           flexWrap: "wrap",
-          m: "32px 8px",
+          m: "32px 16px",
           justifyContent: "center",
           alignItems: "center",
         }}

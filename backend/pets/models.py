@@ -6,7 +6,7 @@ from django.db import models
 
 class Pet(models.Model):
     # need to add another property for primary key to send to the frontend so that it can make DELETE requests
-    pet_id = models.CharField(blank=False)
+    pet_id = models.IntegerField(primary_key=True)
     name = models.CharField(blank=False)
     description = models.CharField(blank=False)
     pet_more_info_url = models.CharField(blank=False)

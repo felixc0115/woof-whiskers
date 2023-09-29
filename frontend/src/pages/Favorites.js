@@ -24,14 +24,14 @@ const Favorites = () => {
         display: "flex",
         gap: "32px",
         flexWrap: "wrap",
-        m: "32px 8px",
+        m: "32px 16px",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       {" "}
       {userFavPets?.map((pet) => (
-        <FavoritedPetCard key={pet.id} pet={pet} />
+        <FavoritedPetCard key={pet.pet_id} pet={pet} />
       ))}
     </Box>
   );

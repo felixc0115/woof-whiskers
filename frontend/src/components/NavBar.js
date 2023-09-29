@@ -15,7 +15,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../store/auth-slice";
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
@@ -45,13 +51,8 @@ const NavBar = () => {
               <Avatar
                 sx={{ width: 30, height: 30 }}
                 src="https://images.pexels.com/photos/3402575/pexels-photo-3402575.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                onClick={() => {
-                  setOpen(true);
-                }}
+                onClick={handleOpenUserMenu}
               />
-              <Button onClick={logoutHandler} variant="outline">
-                Logout
-              </Button>
             </>
           ) : (
             <>
@@ -67,24 +68,33 @@ const NavBar = () => {
       </StyledToolbar>
 
       <Menu
-        aria-labelledby="demo-positioned-button"
-        open={open} //this determines the state of the menu bar because it is assigned the open state.
-        onClose={() => setOpen(false)} //Allows you to click anywhere (outside of the element that triggers the menu to open) to close
+        anchorEl={anchorElUser}
+        keepMounted
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
         anchorOrigin={{
-          vertical: "top",
+          vertical: "bottom",
           horizontal: "right",
         }}
         transformOrigin={{
-          vertical: "top",
+          vertical: "bottom",
           horizontal: "right",
         }}
       >
         <MenuItem>
-          <Link to="/pets">Explore</Link>
+          <Link style={{ color: "black", textDecoration: "none" }} to="/pets">
+            Explore
+          </Link>
         </MenuItem>
         <MenuItem>
-          <Link to="/favorites">Favorites</Link>
+          <Link
+            style={{ color: "black", textDecoration: "none" }}
+            to="/favorites"
+          >
+            Favorites
+          </Link>
         </MenuItem>
+        <MenuItem onClick={logoutHandler}>Logout</MenuItem>
       </Menu>
     </AppBar>
   );

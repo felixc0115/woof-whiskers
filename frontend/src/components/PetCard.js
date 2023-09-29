@@ -20,7 +20,7 @@ const PetCard = ({ pet }) => {
       name: pet.name,
       description: pet.description,
       pet_more_info_url: pet.url,
-      pet_picture_url: pet.primary_photo_cropped.medium,
+      pet_picture_url: pet?.primary_photo_cropped?.medium,
       city: pet.contact.address.city,
       state: pet.contact.address.state,
       favorited_by: user.username,
