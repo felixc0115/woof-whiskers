@@ -1,20 +1,18 @@
-import { Box, Button, IconButton, Pagination, Paper } from "@mui/material";
+import { Box, IconButton, Pagination, Paper } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 import PetCard from "../components/PetCard";
-import { examplePets } from "../assets/examplePets";
 import SearchIcon from "@mui/icons-material/Search";
-import { Search, SearchIconWrapper, StyledInputBase } from "../styles/style";
 
 const Pets = () => {
   const [pets, setPets] = useState([]);
   const [searchZip, setSearchZip] = useState("30341");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState("1");
 
   const zipCodeRef = useRef(null);
 
   useEffect(() => {
     getPets();
-  }, [searchZip]);
+  }, [searchZip, page]);
 
   //async function that retrieves the access token from the api
   const getAccessToken = async () => {
@@ -38,7 +36,7 @@ const Pets = () => {
     const token = await getAccessToken();
 
     const response = await fetch(
-      `https://api.petfinder.com/v2/animals?location=${searchZip}`,
+      `https://api.petfinder.com/v2/animals?location=${searchZip}&page=${page}`,
       {
         method: "GET",
         headers: {
@@ -59,18 +57,6 @@ const Pets = () => {
 
   return (
     <>
-      {/* <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          maxLength="5"
-          inputRef={zipCodeRef}
-          placeholder="Search…"
-          inputProps={{ "aria-label": "search" }}
-        />
-        <Button onClick={handleSubmit}>Search</Button>
-      </Search> */}
       <Paper
         component="form"
         onSubmit={handleSubmit}
@@ -111,7 +97,7 @@ const Pets = () => {
         {pets?.map((pet) => {
           return <PetCard key={pet.id} pet={pet} />;
         })}
-        <Pagination count={10} />
+        <Pagination onChange={(e, page) => setPage(page)} count={10} />
       </Box>
     </>
   );

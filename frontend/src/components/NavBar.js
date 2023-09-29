@@ -80,6 +80,9 @@ const NavBar = () => {
         }}
       >
         <MenuItem>
+          <Link to="/pets">Explore</Link>
+        </MenuItem>
+        <MenuItem>
           <Link to="/favorites">Favorites</Link>
         </MenuItem>
       </Menu>
