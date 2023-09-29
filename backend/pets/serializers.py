@@ -13,6 +13,6 @@ class PetSerializer(serializers.ModelSerializer):
             "pet_picture_url",
             "city",
             "state",
-            "users",
+            "favorited_by",
         )
         model = Pet

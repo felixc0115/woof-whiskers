@@ -8,7 +8,7 @@ const allFavoritedPets = createSlice({
 
   reducers: {
     replacePets(state, action) {
-      state.pets = action.payload.pets;
+      state.favPets = [...action.payload];
     },
     addPet(state, action) {
       state.favPets.push(action.payload);

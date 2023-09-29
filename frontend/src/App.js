@@ -16,9 +16,8 @@ function App() {
       path: "/",
       element: <Root />,
       children: [
-        { path: "", element: <HomePage /> },
+        { path: "", element: <Login /> },
         { path: "signup", element: <SignUp /> },
-        { path: "login", element: <Login /> },
         { path: "resume", element: <Resume /> },
         {
           path: "pets",

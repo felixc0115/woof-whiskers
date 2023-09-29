@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-bn@anq=@+9=2f8n*^_$x0_8s*4+l!j1@cv=n55c@j5o(zzs!j1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -148,7 +148,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
         # change to AllowAny if authentication is not working
-        # Is
+        # IsAuthenticated
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
@@ -156,10 +156,11 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ORIGIN_WHITELIST = (
+
+CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
-)
+]
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 

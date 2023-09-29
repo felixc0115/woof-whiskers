@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { Pets } from "@mui/icons-material";
 import {
   AppBar,
@@ -56,7 +55,7 @@ const NavBar = () => {
             </>
           ) : (
             <>
-              <Button variant="container" onClick={() => navigate("/login")}>
+              <Button variant="container" onClick={() => navigate("/")}>
                 Login
               </Button>
               <Button variant="container" onClick={() => navigate("/signup")}>

@@ -4,7 +4,6 @@ from django.db import models
 # Create your models here.
 
 
-# I am intentionally not setting blank = True on the users CharField because if every user removes this specific pet from their favorites it will be blank.
 class Pet(models.Model):
     pet_id = models.CharField(blank=False)
     name = models.CharField(blank=False)
