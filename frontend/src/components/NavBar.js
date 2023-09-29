@@ -67,7 +67,6 @@ const NavBar = () => {
       </StyledToolbar>
 
       <Menu
-        id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         open={open} //this determines the state of the menu bar because it is assigned the open state.
         onClose={() => setOpen(false)} //Allows you to click anywhere (outside of the element that triggers the menu to open) to close

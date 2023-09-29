@@ -7,28 +7,18 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { allPetActions } from "../store/all-favorite-pets-slice";
 import { useSelector, useDispatch } from "react-redux";
 import { sendPetData } from "../store/pet-actions";
 
-const PetCard = ({ pet }) => {
+const FavoritedPetCard = ({ pet }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
-  const addToFavoritesHandler = () => {
-    const favoritedPet = {
-      pet_id: pet.id,
-      name: pet.name,
-      description: pet.description,
-      pet_more_info_url: pet.url,
-      pet_picture_url: pet.primary_photo_cropped.medium,
-      city: pet.contact.address.city,
-      state: pet.contact.address.state,
-      favorited_by: user.username,
-    };
+  const removeFromFavoritesHandler = (e) => {
+    //need to create a thunk action creator that makes a DELETE request to the specific API endpoint that has the favorited pet
 
     const token = JSON.parse(localStorage.getItem("user")).key;
-
-    dispatch(sendPetData(favoritedPet, token));
   };
 
   return (
@@ -36,8 +26,7 @@ const PetCard = ({ pet }) => {
       <CardMedia
         sx={{ height: 300 }}
         image={
-          pet?.primary_photo_cropped?.medium ||
-          "https://fakeimg.pl/600x400?text=No+Image"
+          pet?.pet_picture_url || "https://fakeimg.pl/600x400?text=No+Image"
         } //the ? in the pet?.primary_photo_cropped?.medium is called optional chaining and checks if the left of the question mark is null and if so returns undefined
         title="animal"
       />
@@ -50,8 +39,8 @@ const PetCard = ({ pet }) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ position: "absolute", bottom: 0 }}>
-        <Button onClick={addToFavoritesHandler} size="small">
-          Favorite
+        <Button onClick={removeFromFavoritesHandler} size="small">
+          Remove
         </Button>
         <Button size="small">
           <a href={pet.url}>Learn More</a>
@@ -61,4 +50,4 @@ const PetCard = ({ pet }) => {
   );
 };
 
-export default PetCard;
+export default FavoritedPetCard;

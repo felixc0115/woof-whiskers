@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const allFavoritedPetsSlice = createSlice({
-  name: "allFavoritedPets",
+  name: "allFavPets",
   initialState: {
     favPets: [],
   },

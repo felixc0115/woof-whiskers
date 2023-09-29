@@ -14,12 +14,14 @@ export const fetchAllPetsData = (token) => {
       if (!response.ok) {
         throw new Error("Could not fetch pets");
       }
-
+      console.log(response);
       const data = await response.json();
+      console.log(data);
       return data;
     };
     try {
       const petsData = await fetchData();
+      console.log(petsData);
       dispatch(allPetActions.replacePets(petsData));
     } catch (error) {
       console.error(error);
