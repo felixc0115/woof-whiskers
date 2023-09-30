@@ -7,7 +7,7 @@ from django.db import models
 class Pet(models.Model):
     pet_id = models.IntegerField(primary_key=True)
     name = models.CharField(blank=False)
-    description = models.CharField(blank=False)
+    description = models.CharField(null=True, blank=True)
     pet_more_info_url = models.CharField(blank=False)
     pet_picture_url = models.CharField(null=True, blank=True)
     city = models.CharField(null=True)
