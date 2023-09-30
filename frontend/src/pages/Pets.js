@@ -14,6 +14,14 @@ const Pets = () => {
     getPets();
   }, [searchZip, page]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [page]);
+
   //async function that retrieves the access token from the api
   const getAccessToken = async () => {
     const response = await fetch("https://api.petfinder.com/v2/oauth2/token", {

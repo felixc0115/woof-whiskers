@@ -14,7 +14,10 @@ const allFavoritedPetsSlice = createSlice({
       state.favPets.push(action.payload);
     },
     removePet(state, action) {
-      state.favPets = state.filter((pet) => pet.pet_id !== action.payload);
+      const updatedFavPets = state.filter(
+        (pet) => pet.pet_id !== action.payload.id
+      );
+      state.favPets = updatedFavPets;
     },
   },
 });

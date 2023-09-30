@@ -3,6 +3,7 @@ import {
   AppBar,
   Avatar,
   Button,
+  IconButton,
   Menu,
   MenuItem,
   Typography,
@@ -47,12 +48,12 @@ const NavBar = () => {
           {user ? (
             <>
               <Typography variant="span">{` welcome, ${user?.username}!`}</Typography>
-
-              <Avatar
-                sx={{ width: 30, height: 30 }}
-                src="https://images.pexels.com/photos/3402575/pexels-photo-3402575.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                onClick={handleOpenUserMenu}
-              />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar
+                  sx={{ width: 30, height: 30 }}
+                  src="https://images.pexels.com/photos/3402575/pexels-photo-3402575.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                />
+              </IconButton>
             </>
           ) : (
             <>
@@ -82,12 +83,17 @@ const NavBar = () => {
         }}
       >
         <MenuItem>
-          <Link style={{ color: "black", textDecoration: "none" }} to="/pets">
+          <Link
+            onClick={handleCloseUserMenu}
+            style={{ color: "black", textDecoration: "none" }}
+            to="/pets"
+          >
             Explore
           </Link>
         </MenuItem>
         <MenuItem>
           <Link
+            onClick={handleCloseUserMenu}
             style={{ color: "black", textDecoration: "none" }}
             to="/favorites"
           >
