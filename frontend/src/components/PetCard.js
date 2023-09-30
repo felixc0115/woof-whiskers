@@ -75,10 +75,55 @@ const PetCard = ({ pet }) => {
 
       <Modal open={open} onClose={() => setOpen(false)}>
         <Box sx={style}>
-          <Typography variant="h6" component="h2">
+          <Typography
+            variant="h6"
+            component="h2"
+            sx={{ textDecoration: "underline" }}
+          >
             {pet.name}
           </Typography>
-          <Typography sx={{ mt: 2 }}>{pet.description}</Typography>
+          <Typography sx={{ mt: 2 }}>
+            {" "}
+            <span style={{ "font-weight": "bold" }}>Location:</span>{" "}
+            {`${pet?.contact?.address?.city},${pet?.contact?.address?.state}` ||
+              "No description provided"}
+          </Typography>
+
+          <Typography sx={{ mt: 2 }}>
+            {" "}
+            <span style={{ "font-weight": "bold" }}>Description:</span>{" "}
+            {pet?.description || "No description provided"}
+          </Typography>
+
+          <Typography sx={{ mt: 2 }}>
+            {" "}
+            <span style={{ "font-weight": "bold" }}>Gender:</span>{" "}
+            {pet?.gender || "No gender provided"}
+          </Typography>
+
+          <Typography sx={{ mt: 2 }}>
+            {" "}
+            <span style={{ "font-weight": "bold" }}>Primary Breed:</span>{" "}
+            {pet?.breeds?.primary || "No breed provided"}
+          </Typography>
+
+          <Typography sx={{ mt: 2 }}>
+            {" "}
+            <span style={{ "font-weight": "bold" }}>Primary Color:</span>{" "}
+            {pet?.colors?.primary || "No color provided"}
+          </Typography>
+
+          <Typography sx={{ mt: 2 }}>
+            {" "}
+            <span style={{ "font-weight": "bold" }}>Spayed/Neutered:</span>{" "}
+            {pet?.attributes?.spayed_neutered === true ? "Yes" : "No"}
+          </Typography>
+
+          <Typography sx={{ mt: 2 }}>
+            {" "}
+            <span style={{ "font-weight": "bold" }}>Contact:</span>{" "}
+            {pet?.contact?.email || "No contact info provided"}
+          </Typography>
         </Box>
       </Modal>
     </Card>

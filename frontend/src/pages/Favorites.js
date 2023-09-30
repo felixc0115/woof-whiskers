@@ -22,7 +22,7 @@ const Favorites = () => {
     <>
       <Typography
         variant="h1"
-        sx={{ textAlign: "center", fontSize: "64px", mt: "16px" }}
+        sx={{ textAlign: "center", fontSize: "50px", mt: "16px" }}
       >
         Favorites
       </Typography>

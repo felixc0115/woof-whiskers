@@ -67,10 +67,7 @@ const Pets = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (zipCodeRef.current.value.length < 5) {
-      alert("Please enter a valid zip code (e.g., 30341)");
-      return;
-    }
+    if (zipCodeRef.current.value.length < 5) return;
     setSearchZip(zipCodeRef.current.value);
   };
 
@@ -78,7 +75,7 @@ const Pets = () => {
     <>
       <Typography
         variant="h1"
-        sx={{ textAlign: "center", fontSize: "64px", mt: "16px" }}
+        sx={{ textAlign: "center", fontSize: "50px", mt: "16px" }}
       >
         Explore
       </Typography>
@@ -121,6 +118,8 @@ const Pets = () => {
         {pets?.map((pet) => {
           return <PetCard key={pet.id} pet={pet} />;
         })}
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Pagination onChange={(e, page) => setPage(page)} count={10} />
       </Box>
     </>
