@@ -15,12 +15,10 @@ const FavoritedPetCard = ({ pet }) => {
 
   const removeFromFavoritesHandler = () => {
     const token = JSON.parse(localStorage.getItem("user")).key;
-    const petID = pet.pet_id;
-    const petIDObj = { id: petID };
 
     console.log(token);
-    console.log(petID);
-    dispatch(removePetData(petIDObj, token));
+    console.log(pet);
+    dispatch(removePetData(pet.pet_id, token));
   };
 
   return (

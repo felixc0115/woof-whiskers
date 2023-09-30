@@ -1,4 +1,11 @@
-import { Box, IconButton, Input, Pagination, Paper } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Input,
+  Pagination,
+  Paper,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 import PetCard from "../components/PetCard";
 import SearchIcon from "@mui/icons-material/Search";
@@ -69,6 +76,12 @@ const Pets = () => {
 
   return (
     <>
+      <Typography
+        variant="h1"
+        sx={{ textAlign: "center", fontSize: "64px", mt: "16px" }}
+      >
+        Explore
+      </Typography>
       <Paper
         component="form"
         onSubmit={handleSubmit}

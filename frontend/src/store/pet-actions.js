@@ -55,7 +55,7 @@ export const sendPetData = (newPet, token) => {
   };
 };
 
-export const removePetData = async (petID, token) => {
+export const removePetData = (petID, token) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       const response = await fetch(`http://localhost:8000/api/v1/${petID}`, {
