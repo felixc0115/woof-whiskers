@@ -34,12 +34,6 @@ const SignUp = () => {
         password2: passwordConfirm,
       })
     );
-    console.log({
-      username,
-      email,
-      password1: password,
-      password2: passwordConfirm,
-    });
     navigate("/login");
   };
 

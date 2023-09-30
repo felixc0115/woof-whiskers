@@ -1,16 +1,15 @@
 import {
-  Box,
   Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
-  Modal,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sendPetData } from "../store/pet-actions";
+import LearnMoreModal from "./LearnMoreModal";
 
 const PetCard = ({ pet }) => {
   const dispatch = useDispatch();
@@ -32,18 +31,6 @@ const PetCard = ({ pet }) => {
     const token = JSON.parse(localStorage.getItem("user")).key;
 
     dispatch(sendPetData(favoritedPet, token));
-  };
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
   };
 
   return (
@@ -72,60 +59,7 @@ const PetCard = ({ pet }) => {
           Learn More
         </Button>
       </CardActions>
-
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <Box sx={style}>
-          <Typography
-            variant="h6"
-            component="h2"
-            sx={{ textDecoration: "underline" }}
-          >
-            {pet.name}
-          </Typography>
-          <Typography sx={{ mt: 2 }}>
-            {" "}
-            <span style={{ "font-weight": "bold" }}>Location:</span>{" "}
-            {`${pet?.contact?.address?.city},${pet?.contact?.address?.state}` ||
-              "No description provided"}
-          </Typography>
-
-          <Typography sx={{ mt: 2 }}>
-            {" "}
-            <span style={{ "font-weight": "bold" }}>Description:</span>{" "}
-            {pet?.description || "No description provided"}
-          </Typography>
-
-          <Typography sx={{ mt: 2 }}>
-            {" "}
-            <span style={{ "font-weight": "bold" }}>Gender:</span>{" "}
-            {pet?.gender || "No gender provided"}
-          </Typography>
-
-          <Typography sx={{ mt: 2 }}>
-            {" "}
-            <span style={{ "font-weight": "bold" }}>Primary Breed:</span>{" "}
-            {pet?.breeds?.primary || "No breed provided"}
-          </Typography>
-
-          <Typography sx={{ mt: 2 }}>
-            {" "}
-            <span style={{ "font-weight": "bold" }}>Primary Color:</span>{" "}
-            {pet?.colors?.primary || "No color provided"}
-          </Typography>
-
-          <Typography sx={{ mt: 2 }}>
-            {" "}
-            <span style={{ "font-weight": "bold" }}>Spayed/Neutered:</span>{" "}
-            {pet?.attributes?.spayed_neutered === true ? "Yes" : "No"}
-          </Typography>
-
-          <Typography sx={{ mt: 2 }}>
-            {" "}
-            <span style={{ "font-weight": "bold" }}>Contact:</span>{" "}
-            {pet?.contact?.email || "No contact info provided"}
-          </Typography>
-        </Box>
-      </Modal>
+      <LearnMoreModal pet={pet} setOpen={setOpen} open={open} />
     </Card>
   );
 };
