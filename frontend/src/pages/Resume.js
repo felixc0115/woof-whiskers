@@ -8,15 +8,17 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 
 const Resume = () => {
   return (
-    <Box sx={{ mx: "auto", width: "300px" }}>
-      <Document file={pdf}>
-        <Page
-          pageNumber={1}
-          renderTextLayer={false}
-          renderAnnotationLayer={false}
-        />
-      </Document>
-    </Box>
+    <>
+      <Box sx={{ mx: "auto", width: "600px" }}>
+        <Document file={pdf}>
+          <Page
+            pageNumber={1}
+            renderTextLayer={false}
+            renderAnnotationLayer={false}
+          />
+        </Document>
+      </Box>
+    </>
   );
 };
 
