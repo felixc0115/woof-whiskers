@@ -2,10 +2,13 @@ FROM node:18.18.0
 
 WORKDIR /code/frontend
 
-COPY . .
+RUN npm install -g react-scripts
 
-RUN npm install
+RUN chown -Rh node:node /code/frontend
+
+USER node
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+
+CMD [ "sh", "-c", "npm install && npm run start" ]

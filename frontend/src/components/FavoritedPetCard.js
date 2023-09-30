@@ -1,17 +1,32 @@
 import {
+  Box,
   Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
+  Modal,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removePetData } from "../store/pet-actions";
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 const FavoritedPetCard = ({ pet }) => {
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
 
   const removeFromFavoritesHandler = () => {
     const token = JSON.parse(localStorage.getItem("user")).key;
@@ -42,10 +57,21 @@ const FavoritedPetCard = ({ pet }) => {
         <Button onClick={removeFromFavoritesHandler} size="small">
           Remove
         </Button>
-        <Button size="small">
-          <a href={pet.url}>Learn More</a>
+        <Button size="small" onClick={() => setOpen(true)}>
+          Learn More
         </Button>
       </CardActions>
+
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
     </Card>
   );
 };
