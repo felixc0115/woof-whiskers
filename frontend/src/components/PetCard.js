@@ -1,18 +1,21 @@
 import {
+  Box,
   Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
+  Modal,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sendPetData } from "../store/pet-actions";
 
 const PetCard = ({ pet }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const [open, setOpen] = useState(false);
 
   const addToFavoritesHandler = () => {
     const favoritedPet = {
@@ -29,6 +32,18 @@ const PetCard = ({ pet }) => {
     const token = JSON.parse(localStorage.getItem("user")).key;
 
     dispatch(sendPetData(favoritedPet, token));
+  };
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
   };
 
   return (
@@ -53,10 +68,19 @@ const PetCard = ({ pet }) => {
         <Button onClick={addToFavoritesHandler} size="small">
           Favorite
         </Button>
-        <Button size="small">
-          <a href={pet.url}>Learn More</a>
+        <Button onClick={() => setOpen(true)} size="small">
+          Learn More
         </Button>
       </CardActions>
+
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Box sx={style}>
+          <Typography variant="h6" component="h2">
+            {pet.name}
+          </Typography>
+          <Typography sx={{ mt: 2 }}>{pet.description}</Typography>
+        </Box>
+      </Modal>
     </Card>
   );
 };
