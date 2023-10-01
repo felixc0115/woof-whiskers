@@ -26,45 +26,45 @@ const LearnMoreModal = ({ pet, setOpen, open }) => {
         </Typography>
         <Typography sx={{ mt: 2 }}>
           {" "}
-          <span style={{ "font-weight": "bold" }}>Location:</span>{" "}
+          <span style={{ fontWeight: "bold" }}>Location:</span>{" "}
           {`${pet?.contact?.address?.city}, ${pet?.contact?.address?.state}` ||
             `${pet.city}, ${pet.state}` ||
-            "No description provided"}
+            "No location provided"}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>
           {" "}
-          <span style={{ "font-weight": "bold" }}>Description:</span>{" "}
+          <span style={{ fontWeight: "bold" }}>Description:</span>{" "}
           {pet?.description || "No description provided"}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>
           {" "}
-          <span style={{ "font-weight": "bold" }}>Gender:</span>{" "}
+          <span style={{ fontWeight: "bold" }}>Gender:</span>{" "}
           {pet?.gender || "No gender provided"}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>
           {" "}
-          <span style={{ "font-weight": "bold" }}>Primary Breed:</span>{" "}
+          <span style={{ fontWeight: "bold" }}>Primary Breed:</span>{" "}
           {pet?.breeds?.primary || "No breed provided"}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>
           {" "}
-          <span style={{ "font-weight": "bold" }}>Primary Color:</span>{" "}
+          <span style={{ fontWeight: "bold" }}>Primary Color:</span>{" "}
           {pet?.colors?.primary || "No color provided"}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>
           {" "}
-          <span style={{ "font-weight": "bold" }}>Spayed/Neutered:</span>{" "}
+          <span style={{ fontWeight: "bold" }}>Spayed/Neutered:</span>{" "}
           {pet?.attributes?.spayed_neutered === true ? "Yes" : "No"}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>
           {" "}
-          <span style={{ "font-weight": "bold" }}>Contact:</span>{" "}
+          <span style={{ fontWeight: "bold" }}>Contact:</span>{" "}
           {pet?.contact?.email || "No contact info provided"}
         </Typography>
       </Box>

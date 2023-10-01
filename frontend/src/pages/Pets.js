@@ -120,7 +120,7 @@ const Pets = () => {
         })}
       </Box>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Pagination onChange={(e, page) => setPage(page)} count={10} />
+        <Pagination onChange={(e, page) => setPage(page)} count={20} />
       </Box>
     </>
   );

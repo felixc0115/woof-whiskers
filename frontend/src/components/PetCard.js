@@ -19,6 +19,11 @@ const PetCard = ({ pet }) => {
   const addToFavoritesHandler = () => {
     const favoritedPet = {
       pet_id: pet.id,
+      gender: pet?.gender,
+      primary_breed: pet?.breeds?.primary,
+      primary_color: pet?.colors?.primary,
+      spayed_neutered: pet?.attributes?.spayed_neutered,
+      contact: pet?.contact?.email,
       name: pet.name,
       description: pet?.description,
       pet_more_info_url: pet.url,
