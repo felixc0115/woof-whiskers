@@ -8,6 +8,11 @@ class PetSerializer(serializers.ModelSerializer):
         fields = (
             "pet_id",
             "name",
+            "gender",
+            "primary_breed",
+            "primary_color",
+            "spayed_neutered",
+            "contact",
             "description",
             "pet_more_info_url",
             "pet_picture_url",

@@ -2,6 +2,7 @@ import { Favorite, Pets, Support } from "@mui/icons-material";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const sectionItems = [
   {
@@ -28,6 +29,7 @@ const sectionItems = [
 ];
 
 const Home = () => {
+  const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
   return (
     <>
@@ -67,14 +69,16 @@ const Home = () => {
               journey of love, loyalty, and shared adventures. Together, you'll
               write a story filled with laughter, comfort, and boundless joy.
             </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ width: "200px", fontSize: "16px" }}
-              onClick={() => navigate("pets")}
-            >
-              Search Pets
-            </Button>
+            {!user && (
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ width: "200px", fontSize: "16px" }}
+                onClick={() => navigate("/signup")}
+              >
+                Sign Up
+              </Button>
+            )}
           </Grid>
           <Grid item xs={12} md={5}>
             <img
@@ -119,6 +123,58 @@ const Home = () => {
               <Typography>{item.sentence}</Typography>
             </Grid>
           ))}
+        </Grid>
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          minHeight: "400px",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "30px 0px 100px 0px",
+        }}
+      >
+        <Grid
+          container
+          spacing={6}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            maxWidth: "1300px",
+            padding: "50px",
+          }}
+        >
+          <Grid item xs={12} md={5}>
+            <img
+              src="https://images.unsplash.com/photo-1594005374167-5fd900fb82c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2637&q=80"
+              alt="pet"
+              style={{ width: "100%" }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography
+              variant="h3"
+              fontWeight={700}
+              sx={{ paddingBottom: "15px" }}
+            >
+              Finding the Perfect Companion
+            </Typography>
+            <Typography
+              sx={{ opacity: "0.7", paddingBottom: "30px", fontSize: "18px" }}
+            >
+              To find the perfect pet, start by assessing your lifestyle and
+              living space. Consider factors like size, exercise needs, and
+              compatibility with existing pets. Decide whether you prefer a
+              specific breed or are open to adoption. Spend quality time with
+              potential pets to gauge their temperament and suitability. Ask
+              about their history and any special needs. Trust your instincts
+              and choose the pet that resonates with you and fits your
+              lifestyle. Remember, the perfect pet brings joy and companionship
+              to your life.
+            </Typography>
+          </Grid>
         </Grid>
       </Box>
     </>
