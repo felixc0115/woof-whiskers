@@ -88,12 +88,12 @@ const Pets = () => {
           pl: 2,
           boxShadow: "none",
           m: "16px auto 8px",
-          width: "420px",
+          width: "280px",
           height: "50px",
         }}
       >
         <Input
-          sx={{ border: "none", outline: "none", width: "350px" }}
+          sx={{ border: "none", outline: "none", width: "200px" }}
           inputRef={zipCodeRef}
           placeholder="Search by zip code"
         />
@@ -119,7 +119,14 @@ const Pets = () => {
           return <PetCard key={pet.id} pet={pet} />;
         })}
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          my: "40px",
+          pb: "120px",
+        }}
+      >
         <Pagination onChange={(e, page) => setPage(page)} count={20} />
       </Box>
     </>

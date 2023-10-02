@@ -29,6 +29,7 @@ const NavBar = () => {
 
   const logoutHandler = () => {
     dispatch(authActions.logout());
+    setAnchorElUser(null);
     navigate("/");
   };
 
@@ -57,7 +58,7 @@ const NavBar = () => {
             </>
           ) : (
             <>
-              <Button variant="container" onClick={() => navigate("/")}>
+              <Button variant="container" onClick={() => navigate("/login")}>
                 Login
               </Button>
               <Button variant="container" onClick={() => navigate("/signup")}>

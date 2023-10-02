@@ -52,7 +52,8 @@ const PetCard = ({ pet }) => {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {pet.name.split("-")[0]}
+          {pet.name.split("-")[0]}{" "}
+          <Typography variant="subtitle2">{`${pet?.contact?.address?.city}, ${pet?.contact?.address?.state}`}</Typography>
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {pet?.description || "No description provided"}

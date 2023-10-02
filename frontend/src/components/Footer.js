@@ -1,26 +1,30 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <Box
-      component="footer"
       sx={{
-        bgcolor: "background.paper",
-        py: 6,
+        display: "flex",
+        alignItems: "center",
+        padding: "8px",
+        justifyContent: "center",
+        backgroundColor: "#f2f0f1",
+        flexDirection: "column",
+        position: "fixed",
+        bottom: 0,
+        width: "100%",
       }}
     >
-      <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
-          Built by Felix Chen
-        </Typography>
-        <Typography color="text.secondary" align="center">
-          <Link to="resume">View my resume</Link>
-        </Typography>
-      </Container>
+      <Typography sx={{ paddingBottom: "3px" }}>
+        <Button onClick={() => navigate("/resume")}>View My Resume</Button>
+      </Typography>
+      <Typography sx={{ opacity: "0.4" }}>Built by Felix Chen</Typography>
     </Box>
   );
 };

@@ -8,6 +8,7 @@ import Pets from "./pages/Pets";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Favorites from "./pages/Favorites";
+import Home from "./pages/Home";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,7 +16,8 @@ function App() {
       path: "/",
       element: <Root />,
       children: [
-        { path: "", element: <Login /> },
+        { path: "", element: <Home /> },
+        { path: "login", element: <Login /> },
         { path: "signup", element: <SignUp /> },
         { path: "resume", element: <Resume /> },
         {

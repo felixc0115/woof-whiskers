@@ -1,30 +1,26 @@
 import { authActions } from "./auth-slice";
 
-//thunk action creator
-export const sendUserSignupData = (userData) => {
-  //thunk function
-  return async () => {
-    const sendUserData = async () => {
-      const response = await fetch(
-        "http://localhost:8000/api/v1/dj-rest-auth/registration/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userData),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Sending user data failed");
+export const sendUserSignupData = async (userData) => {
+  const sendUserData = async () => {
+    const response = await fetch(
+      "http://localhost:8000/api/v1/dj-rest-auth/registration/",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
       }
-    };
+    );
 
-    try {
-      await sendUserData();
-    } catch (error) {
-      console.error(error);
+    if (!response.ok) {
+      throw new Error("Sending user data failed");
     }
   };
+
+  try {
+    await sendUserData();
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const sendUserLoginData = (userData) => {

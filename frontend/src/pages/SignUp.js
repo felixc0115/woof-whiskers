@@ -12,12 +12,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { sendUserSignupData } from "../store/user-actions";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 const defaultTheme = createTheme();
 
 const SignUp = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -26,14 +24,14 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      sendUserSignupData({
-        username,
-        email,
-        password1: password,
-        password2: passwordConfirm,
-      })
-    );
+
+    sendUserSignupData({
+      username,
+      email,
+      password1: password,
+      password2: passwordConfirm,
+    });
+
     navigate("/login");
   };
 

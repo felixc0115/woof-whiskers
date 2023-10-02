@@ -47,13 +47,13 @@ const LearnMoreModal = ({ pet, setOpen, open }) => {
         <Typography sx={{ mt: 2 }}>
           {" "}
           <span style={{ fontWeight: "bold" }}>Primary Breed:</span>{" "}
-          {pet?.breeds?.primary || "No breed provided"}
+          {pet?.breeds?.primary || pet.primary_breed || "No breed provided"}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>
           {" "}
           <span style={{ fontWeight: "bold" }}>Primary Color:</span>{" "}
-          {pet?.colors?.primary || "No color provided"}
+          {pet?.colors?.primary || pet.primary_color || "No color provided"}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>
@@ -65,7 +65,7 @@ const LearnMoreModal = ({ pet, setOpen, open }) => {
         <Typography sx={{ mt: 2 }}>
           {" "}
           <span style={{ fontWeight: "bold" }}>Contact:</span>{" "}
-          {pet?.contact?.email || "No contact info provided"}
+          {pet?.contact?.email || pet.contact || "No contact info provided"}
         </Typography>
       </Box>
     </Modal>
