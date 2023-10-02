@@ -37,7 +37,7 @@ const Home = () => {
         sx={{
           width: "100%",
           display: "flex",
-          minHeight: "600px",
+          minHeight: "500px",
           alignItems: "center",
           justifyContent: "center",
         }}

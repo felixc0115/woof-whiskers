@@ -27,9 +27,9 @@ const LearnMoreModal = ({ pet, setOpen, open }) => {
         <Typography sx={{ mt: 2 }}>
           {" "}
           <span style={{ fontWeight: "bold" }}>Location:</span>{" "}
-          {`${pet?.contact?.address?.city}, ${pet?.contact?.address?.state}` ||
-            `${pet.city}, ${pet.state}` ||
-            "No location provided"}
+          {!pet.contact?.address?.city
+            ? `${pet.city}, ${pet.state}`
+            : `${pet.contact?.address?.city}, ${pet?.contact?.address?.state}`}
         </Typography>
 
         <Typography sx={{ mt: 2 }}>

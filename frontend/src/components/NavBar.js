@@ -2,10 +2,12 @@ import { Pets } from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
+  Box,
   Button,
   IconButton,
   Menu,
   MenuItem,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { StyledToolbar, UserBox } from "../styles/style";
@@ -45,64 +47,56 @@ const NavBar = () => {
         </Typography>
         <Pets sx={{ display: { xs: "block", sm: "none" } }} />
 
-        <UserBox>
-          {user ? (
-            <>
-              <Typography variant="span">{` welcome, ${user?.username}!`}</Typography>
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  sx={{ width: 30, height: 30 }}
-                  src="https://images.pexels.com/photos/3402575/pexels-photo-3402575.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                />
-              </IconButton>
-            </>
-          ) : (
-            <>
-              <Button variant="container" onClick={() => navigate("/login")}>
-                Login
-              </Button>
-              <Button variant="container" onClick={() => navigate("/signup")}>
-                Signup
-              </Button>
-            </>
-          )}
-        </UserBox>
+        <Box sx={{ flexGrow: 0 }}>
+          <Typography
+            sx={{ mr: "8px" }}
+            variant="span"
+          >{` welcome, ${user?.username}!`}</Typography>
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar
+                alt="profile"
+                src="https://images.pexels.com/photos/3402575/pexels-photo-3402575.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            sx={{ mt: "45px" }}
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            <MenuItem>
+              <Link
+                onClick={handleCloseUserMenu}
+                style={{ color: "black", textDecoration: "none" }}
+                to="/pets"
+              >
+                Explore
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link
+                onClick={handleCloseUserMenu}
+                style={{ color: "black", textDecoration: "none" }}
+                to="/favorites"
+              >
+                Favorites
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+          </Menu>
+        </Box>
       </StyledToolbar>
-
-      <Menu
-        anchorEl={anchorElUser}
-        keepMounted
-        open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-      >
-        <MenuItem>
-          <Link
-            onClick={handleCloseUserMenu}
-            style={{ color: "black", textDecoration: "none" }}
-            to="/pets"
-          >
-            Explore
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link
-            onClick={handleCloseUserMenu}
-            style={{ color: "black", textDecoration: "none" }}
-            to="/favorites"
-          >
-            Favorites
-          </Link>
-        </MenuItem>
-        <MenuItem onClick={logoutHandler}>Logout</MenuItem>
-      </Menu>
     </AppBar>
   );
 };
