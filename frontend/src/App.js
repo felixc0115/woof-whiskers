@@ -1,5 +1,9 @@
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import Root from "./pages/Root";
 import Resume from "./pages/Resume";
 import { ThemeProvider } from "@emotion/react";
@@ -9,8 +13,10 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector((state) => state.auth.user);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -22,9 +28,12 @@ function App() {
         { path: "resume", element: <Resume /> },
         {
           path: "pets",
-          element: <Pets />,
+          element: user ? <Pets /> : <Navigate to="/login" />,
         },
-        { path: "favorites", element: <Favorites /> },
+        {
+          path: "favorites",
+          element: user ? <Favorites /> : <Navigate to="/login" />,
+        },
       ],
     },
   ]);

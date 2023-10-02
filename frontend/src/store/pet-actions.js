@@ -50,7 +50,7 @@ export const sendPetData = (newPet, token) => {
       dispatch(allPetActions.addPet(newPet));
     } catch (error) {
       console.error(error);
-      alert("Sending pet data failed");
+      alert("Pet already added to favorites.");
     }
   };
 };

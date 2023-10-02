@@ -3,14 +3,13 @@ import {
   AppBar,
   Avatar,
   Box,
-  Button,
   IconButton,
   Menu,
   MenuItem,
   Tooltip,
   Typography,
+  Toolbar,
 } from "@mui/material";
-import { StyledToolbar, UserBox } from "../styles/style";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +36,7 @@ const NavBar = () => {
 
   return (
     <AppBar position="sticky">
-      <StyledToolbar>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography
           onClick={() => navigate("/")}
           variant="h6"
@@ -79,6 +78,15 @@ const NavBar = () => {
               <Link
                 onClick={handleCloseUserMenu}
                 style={{ color: "black", textDecoration: "none" }}
+                to="/"
+              >
+                Home
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link
+                onClick={handleCloseUserMenu}
+                style={{ color: "black", textDecoration: "none" }}
                 to="/pets"
               >
                 Explore
@@ -96,7 +104,7 @@ const NavBar = () => {
             <MenuItem onClick={logoutHandler}>Logout</MenuItem>
           </Menu>
         </Box>
-      </StyledToolbar>
+      </Toolbar>
     </AppBar>
   );
 };
