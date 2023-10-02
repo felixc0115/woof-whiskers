@@ -2,13 +2,16 @@ import { Document, Page } from "react-pdf";
 import { pdfjs } from "react-pdf";
 import pdf from "../assets/felix_chen_resume.pdf";
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 const Resume = () => {
   return (
     <Box sx={{ mb: "120px" }}>
+      <Typography sx={{ textAlign: "center", fontSize: "20px", mt: "16px" }}>
+        Hello BeyondMD!
+      </Typography>
       <Box sx={{ mx: "auto", width: "600px" }}>
         <Document file={pdf}>
           <Page

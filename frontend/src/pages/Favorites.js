@@ -26,7 +26,7 @@ const Favorites = () => {
       >
         Favorites
       </Typography>
-      {favPets.length === 0 && (
+      {userFavPets.length === 0 && (
         <Typography sx={{ textAlign: "center", fontSize: "20px", mt: "16px" }}>
           There are currently no favorited pets.{" "}
         </Typography>
