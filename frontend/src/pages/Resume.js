@@ -8,7 +8,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 
 const Resume = () => {
   return (
-    <>
+    <Box sx={{ mb: "120px" }}>
       <Box sx={{ mx: "auto", width: "600px" }}>
         <Document file={pdf}>
           <Page
@@ -18,7 +18,7 @@ const Resume = () => {
           />
         </Document>
       </Box>
-    </>
+    </Box>
   );
 };
 

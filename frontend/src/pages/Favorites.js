@@ -19,7 +19,7 @@ const Favorites = () => {
   );
 
   return (
-    <>
+    <Box sx={{ mb: "120px" }}>
       <Typography
         variant="h1"
         sx={{ textAlign: "center", fontSize: "50px", mt: "16px" }}
@@ -46,7 +46,7 @@ const Favorites = () => {
           <FavoritedPetCard key={pet.pet_id} pet={pet} />
         ))}
       </Box>
-    </>
+    </Box>
   );
 };
 

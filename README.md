@@ -13,6 +13,7 @@ The Woof & Whisker application is built using the following technologies:
 - PostgreSQL
 - CSS
 - MUI
+- Docker
 
 ## Current Features
 
@@ -27,4 +28,6 @@ The Woof & Whiskers application includes the following features:
 To further improve the Woof & Whiskers application, we plan to add the following features:
 
 - Explore Page Filter: We plan to add a filter sidebar that allows a user to filter by specific criteria (e.g., breed, gender, age, etc.).
+- Enhance Search Capabilities: We plan to enhance the search capabilities to have the option to search by other criteria besides zip code (e.g., type of animal, specific breed, etc.)
 - Email a Pet's Specific Organization: We plan to add the ability for a user to click on an email address which will prompt a user's device to open up a draft email to send to the specific organization.
+- Communication Feature: We plan to add the ability for users to communicate with shelter organizations to inquire about a specific pet.
