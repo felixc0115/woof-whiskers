@@ -9,11 +9,13 @@ import {
 import React, { useEffect, useState, useRef } from "react";
 import PetCard from "../components/PetCard";
 import SearchIcon from "@mui/icons-material/Search";
+import Spinner from "../components/Spinner";
 
 const Pets = () => {
   const [pets, setPets] = useState([]);
   const [searchZip, setSearchZip] = useState("30341");
   const [page, setPage] = useState("1");
+  const [loading, setLoading] = useState(true);
 
   const zipCodeRef = useRef(null);
 
@@ -62,6 +64,7 @@ const Pets = () => {
     );
     const data = await response.json();
     console.log(data.animals);
+    setLoading(false);
     setPets(data.animals);
   };
 
@@ -69,6 +72,7 @@ const Pets = () => {
     e.preventDefault();
     if (zipCodeRef.current.value.length < 5) return;
     setSearchZip(zipCodeRef.current.value);
+    setLoading(true);
   };
 
   return (
@@ -105,20 +109,25 @@ const Pets = () => {
           <SearchIcon />
         </IconButton>
       </Paper>
-      <Box
-        sx={{
-          display: "flex",
-          gap: "32px",
-          flexWrap: "wrap",
-          m: "32px 16px",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {pets?.map((pet) => {
-          return <PetCard key={pet.id} pet={pet} />;
-        })}
-      </Box>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            gap: "32px",
+            flexWrap: "wrap",
+            m: "32px 16px",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {pets?.map((pet) => {
+            return <PetCard key={pet.id} pet={pet} />;
+          })}
+        </Box>
+      )}
+
       <Box
         sx={{
           display: "flex",

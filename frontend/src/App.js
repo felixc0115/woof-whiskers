@@ -38,6 +38,7 @@ function App() {
     },
   ]);
 
+  //generate a theme based on the options received. This is currently empty but I would like to work on utilizing it so then I could cut down on some styling elsewhere in my application
   const theme = createTheme({});
 
   return (
