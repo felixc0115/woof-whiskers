@@ -2,6 +2,11 @@
 
 The Woof & Whiskers application is a a full-stack web app aimed to match adoptable pets with interested users. The app allows a user to find and save various pets and learn more about them (e.g., breed, color, gender, etc.). It is built using various technologies including JavaScript, React JS, Redux Toolkit, Django, PostgreSQL, and MUI. The full-stack web app has been dockerized.
 
+# Installation
+From root of project directory
+
+```docker-compose up```
+
 ## Technologies Used
 
 The Woof & Whisker application is built using the following technologies:
