@@ -9,9 +9,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 const Resume = () => {
   return (
     <Box sx={{ mb: "120px" }}>
-      <Typography sx={{ textAlign: "center", fontSize: "20px", mt: "16px" }}>
-        Hello BeyondMD!
-      </Typography>
       <Box sx={{ mx: "auto", width: "600px" }}>
         <Document file={pdf}>
           <Page
